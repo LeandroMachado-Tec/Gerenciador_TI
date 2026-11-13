@@ -1,0 +1,73 @@
+{
+    "name":  "gerenciador-ti",
+    "productName":  "Gerenciador de TI",
+    "version":  "1.0.1",
+    "description":  "Gerenciador de Rustdesk, IP Scanner e ADM Local â€” by Machado_Scripts",
+    "main":  "out/main/index.js",
+    "author":  "Machado_Scripts",
+    "private":  true,
+    "scripts":  {
+                    "dev":  "electron-vite dev",
+                    "start":  "electron-vite preview",
+                    "build":  "electron-vite build",
+                    "typecheck":  "tsc --noEmit -p tsconfig.web.json \u0026\u0026 tsc --noEmit -p tsconfig.node.json",
+                    "dist":  "electron-vite build \u0026\u0026 electron-builder --win",
+                    "dist:portable":  "electron-vite build \u0026\u0026 electron-builder --win portable"
+                },
+    "dependencies":  {
+                         "electron-updater":  "^6.3.9",
+                         "iconv-lite":  "^0.6.3"
+                     },
+    "devDependencies":  {
+                            "@types/node":  "^22.10.0",
+                            "@types/react":  "^18.3.12",
+                            "@types/react-dom":  "^18.3.1",
+                            "@vitejs/plugin-react":  "^4.3.4",
+                            "electron":  "^33.2.0",
+                            "electron-builder":  "^25.1.8",
+                            "electron-vite":  "^2.3.0",
+                            "react":  "^18.3.1",
+                            "react-dom":  "^18.3.1",
+                            "typescript":  "^5.7.2",
+                            "vite":  "^5.4.11"
+                        },
+    "build":  {
+                  "appId":  "com.machadoscripts.gerenciadorti",
+                  "productName":  "Gerenciador de TI",
+                  "directories":  {
+                                      "output":  "release/${version}",
+                                      "buildResources":  "resources"
+                                  },
+                  "files":  [
+                                "out/**",
+                                "resources/icon.ico"
+                            ],
+                  "win":  {
+                              "target":  [
+                                             {
+                                                 "target":  "nsis",
+                                                 "arch":  [
+                                                              "x64"
+                                                          ]
+                                             }
+                                         ],
+                              "icon":  "resources/icon.ico"
+                          },
+                  "nsis":  {
+                               "oneClick":  false,
+                               "allowToChangeInstallationDirectory":  true,
+                               "createDesktopShortcut":  true,
+                               "shortcutName":  "Gerenciador de TI"
+                           },
+                  "publish":  [
+                                  {
+                                      "provider":  "generic",
+                                      "url":  "https://servidor.exemplo.com/updates/gerenciador-ti/"
+                                  }
+                              ]
+              },
+    "allowScripts":  {
+                         "electron@33.4.11":  true,
+                         "esbuild@0.21.5":  true
+                     }
+}
